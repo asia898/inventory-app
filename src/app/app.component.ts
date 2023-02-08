@@ -11,10 +11,10 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  product: Product[];
+  products: Product[];
 
   constructor() {
-    this.product = [
+    this.products = [
       new Product(
         'NICEHAT', //sku,
         'A Nice Black Hat', //name
