@@ -4,7 +4,7 @@ import {
   Input,
   Output
 } from '@angular/core';
-import {} from '../product.model';
+import { Product } from '../product.model';
 
 /**
  * @ProductList: A component for rendering all ProductRows and
@@ -30,4 +30,29 @@ export class ProductListComponent {
    */
 
   @Output() onProductSelected: EventEmitter<Product>;
+
+  /**
+   * @property currentProduct - local state containing 
+   *            the currently selected 'Product'
+   */
+
+  private currentProduct: Product;
+
+  constructor() {
+    this.onProductSelected = new EventEmitter();
+  }
+
+  clicked(product: Product): void {
+    this.currentProduct = product;
+    // emits the Product that was clicked on our output
+    this.onProductSelected.emit(product);
+  }
+
+  isSelected(product: Product): boolean {
+    if(!product || !this.currentProduct) {
+      return false;
+    }
+
+    return product.sku === this.currentProduct.sku;
+  }
 }
