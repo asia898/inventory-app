@@ -12,8 +12,10 @@ import { Product } from './product.model';
 })
 export class AppComponent {
   products: Product[];
+  title: string;
 
   constructor() {
+    this.title = 'inventory-app';
     this.products = [
       new Product(
         'NICEHAT', //sku,
